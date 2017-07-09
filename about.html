@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+<title>Multi Expression Programming - method description </title>
+<meta name ="KEYWORDS" content="Multi Expression Programming, Genetic Programming, Genetic algorithms, data analysis, symbolic regression, classification" />
+<meta name= "description"  content="Multi Expression Programming method description" />
+</head>
+
+<body>
+
+<center>
+<h1>MEP description</h1>
+</center>
+
+<table  cellpadding="8" width="853" align="center">
+	<tr>
+		<td valign="top">
+			<table  cellspacing="4" width="210">
+					<tr><td><a href="index.html">Home</a></td></tr>
+					<tr><td><a><strong>Description</strong></a></td></tr>
+					<tr><td><a href="papers.html">Papers</a></td></tr>
+					<tr><td><a href="source_code.html">Source code</a></td></tr>
+					<tr><td><a href="mepx_software.html">MEPX Software</a></td></tr>
+					<tr><td><a href="mepx_user_manual.html">MEPX user manual</a></td></tr>
+					<tr><td><a href="people.html">People</a></td></tr>
+					<tr><td><a href="what_is_new.html">News</a></td></tr>
+					<tr><td><a href="links.html">Links</a></td></tr>
+					<tr><td><a href="contact.html">Contact</a></td></tr>
+			</table>
+		</td>
+		
+		<td>
+	
+<p>Multi Expression Programming (MEP) is a method for automatic generation of computer programs. Particularly it can be used for generating mathematical expressions for data analysis (regression and classification). MEP differentiates from other GP techniques by encoding multiple solutions in the same chromosome.</p>
+		
+<h2>MEP representation</h2>
+
+MEP representation is not specific. Linear and tree-based representations have been tested (see the list of papers). Here we exemplify with a linear representation.
+
+<ul>
+<li>Each MEP chromosome has a constant number of genes. This number defines the length of the chromosome.</li>
+<li>Each gene contains an instruction (also name function) or variable (also named terminal).</li>
+<li>A gene that encodes a function includes pointers towards the function arguments. Function arguments always have indices of lower values than the position of the function itself in the chromosome. This representation ensures that no cycle arises while the chromosome is decoded (phenotypically transcripted). According to the proposed representation scheme, the first symbol of the chromosome must be a terminal symbol. In this way, only syntactically correct programs (MEP individuals) are obtained.</li>
+</ul>
+
+<h3>Example</h3>
+
+<p>Consider a representation where the numbers on the left positions stand for gene labels. Labels do not belong to the chromosome, as they are provided only for explanation purposes.</p>
+
+<p>For this example we use the set of functions:</p>
+
+<p><i>F</i> = {+, *},</p>
+
+<p>and the set of terminals:</p>
+
+<p><i>T</i> = {a, b, c, d}.</p>
+
+<p>An example of chromosome using the sets <i>F</i> and <i>T</i> is given below:</p>
+
+<ol type="1">
+<li>
+a
+</li>
+<li>
+b
+</li>
+<li>
++ 1, 2
+</li>
+<li>
+c
+</li>
+<li>
+d
+</li>
+<li>
++ 4, 5
+</li>
+<li>
+* 3, 5
+</li>
+</ol>
+ 
+
+<p>The maximum number of symbols in MEP chromosome is given by the formula:</p>
+
+<p>Number_of_Symbols = (n + 1) * (Number_of_Genes – 1) + 1,</p>
+
+<p>where <i>n</i> is the number of arguments of the function with the greatest number of arguments.</p>
+
+<p>The maximum number of effective symbols is achieved when each gene (excepting the first one) encodes a function symbol with the highest number of arguments. The minimum number of effective symbols is equal to the number of genes and it is achieved when all genes encode terminal symbols only.</p>
+
+ 
+
+<h2>Decoding MEP chromosome and the fitness assignment process</h2>
+
+<p>Now we are ready to describe how MEP individuals are translated into computer programs. This translation represents the phenotypic transcription of the MEP chromosomes.</p>
+
+<p>Phenotypic translation is obtained by parsing the chromosome top-down. A terminal symbol specifies a simple expression. A function symbol specifies a complex expression obtained by connecting the operands specified by the argument positions with the current function symbol.</p>
+
+<p>For instance, genes 1, 2, 4 and 5 in the previous example encode simple expressions formed by a single terminal symbol. These expressions are:</p>
+
+<p>E<sub>1</sub> = a,</p>
+
+<p>E<sub>2</sub> = b,</p>
+
+<p>E<sub>4</sub> = c,</p>
+
+<p>E<sub>5</sub> = d,</p>
+
+<p>Gene 3 indicates the operation + on the operands located at positions 1 and 2 of the chromosome. Therefore gene 3 encodes the expression:</p>
+
+<p>E<sub>3</sub> = a + b.</p>
+
+<p>Gene 6 indicates the operation + on the operands located at positions 4 and 5. Therefore gene 6 encodes the expression:</p>
+
+<p>E<sub>6</sub> = c + d.</p>
+
+<p>Gene 7 indicates the operation * on the operands located at position 3 and 5. Therefore gene 7 encodes the expression:</p>
+
+<p>E<sub>7</sub> = (a + b) * d.</p>
+
+<p>E<sub>7</sub> is the last expression encoded by in chromosome.</p>
+
+<p>There is neither practical nor theoretical evidence that one of these expressions is better than the others. This is why each MEP chromosome is allowed to encode a number of expressions equal to the chromosome length (number of genes). The chromosome described above encodes the following expressions:</p>
+
+<p>E<sub>1</sub> = a,</p>
+
+<p>E<sub>2</sub> = b,</p>
+
+<p>E<sub>3</sub> = a + b,</p>
+
+<p>E<sub>4</sub> = c,</p>
+
+<p>E<sub>5</sub> = d,</p>
+
+<p>E<sub>6</sub> = c + d,</p>
+
+<p>E<sub>7</sub> = (a + b) * d.</p>
+
+<p>The value of these expressions may be computed by reading the chromosome top down. Partial results are computed by dynamic programming and are stored in a conventional manner.</p>
+
+<p>Due to its multi expression representation, each MEP chromosome may be viewed as a forest of trees rather than as a single tree, which is the case of Genetic Programming.</p>
+
+<p>As MEP chromosome encodes more than one problem solution, it is interesting to see how the fitness is assigned.</p>
+
+<p>The chromosome fitness is usually defined as the fitness of the best expression encoded by that chromosome.</p>
+
+<p>For instance, if we want to solve symbolic regression problems, the fitness of each sub-expression E<sub>i</sub> may be computed using the formula:</p>
+
+fitness(E<sub>i</sub>) = sum(|<i>obtained<sub>k,i</sub></i> - <i>target<sub>k,i</sub></i>|), <i>k</i>=1,... ,<i>n</i>
+
+
+<p>where <i>obtained<sub>k,i<sub></i> is the result obtained by the expression E<sub>i</sub> for the fitness case <i>k</i> and <i>target<sub>k</sub></i> is the targeted result for the fitness case <i>k</i>. In this case the fitness needs to be minimized.</p>
+
+<p>The fitness of an individual is set to be equal to the lowest fitness of the expressions encoded in the chromosome:</p>
+
+fitness(<i>C</i>) = <b>min</b> fitness(E<sub><i>i</i></sub>).
+
+
+<p>When we have to deal with other problems, we compute the fitness of each sub-expression encoded in the MEP chromosome. Thus, the fitness of the entire individual is supplied by the fitness of the best expression encoded in that chromosome.</p>
+
+ 
+
+<h2>Why encoding multiple solutions within a chromosome?</h2>
+
+<p>When you compute the value of an expression encoded as a GP tree you have the compute the value of all subtrees. This means that all GP subtrees can be viewed as a potential solution of the problem being solved. Most of the GP techniques considers only the one tree while ignoring all the other subtrees. However, the value/fitness for all subtrees is computed by GP. The biggest difference between MEP and other GP techniques is that MEP outputs the best subtree encoded in a chromosome. Note that the complexity (roughly speaking - the running time) is the same for MEP and other GP techniques encoding 1 solution/chromosome.</p>
+
+<p>The second reason for the this question is motivated by the No Free Lunch Theorems for Search. There is neither practical nor theoretical evidence that one of the solutions encoded in a chromosome is better than the others. More than that, Wolpert and McReady proved that we cannot use the search algorithm's behavior so far for a particular test function to predict its future behavior on that function.</p>
+
+ 
+
+<h2>How to encode multiple solutions within a chromosome?</h2>
+
+<p>The second question is more difficult than the first one. There is no general prescription on how to encode multiple solutions in the same chromosome. In most cases this involves creativity and imagination. However, some general suggestions can be given.</p>
+
+<p>In order to obtain some benefits from encoding more than one solution in a chromosome we have to spend a similar effort (computer time, memory etc) as in the case of encoding a single solution in a chromosome. For instance, if we have 10 solutions encoded in chromosome and the time needed to extract and decode these solutions is 10 times larger than the time needed to extract and process one solution we got nothing. In this case we can not talk about an useful encoding.</p>
+
+<p>We have to be careful when we want to encode a multiple solutions in a variable length chromosome (for instance in a standard GP chromosome), because this kind of chromosome will tend to increase its size in order to encode more and more solutions. And this could lead to bloat.</p>
+
+<p>Usually encoding multiple solutions in a chromosome might require storing the partial results. Sometimes this can be achieved by using the Dynamic Programming technique. This kind of model is employed by the Multi Expression Programming.</p>
+
+<h2>Crossover</h2>
+
+<p>One cutting point or uniform crossover have been tested with similar results. The cut points are chosen between instructions not inside them.</p>
+
+<p>One-point recombination operator in MEP representation is similar to the
+corresponding binary representation operator. One crossover point is randomly chosen and the parent chromosomes exchange the sequences at the
+right side of the crossover point.</p>
+
+<h2>Mutation</h2>
+
+<p>
+Each symbol (terminal, function of function pointer) in the chromosome may
+be the target of the mutation operator. Some symbols in the chromosome
+are changed by mutation. To preserve the consistency of the chromosome,
+its first gene must encode a terminal symbol.</p>
+<p>We may say that the crossover operator occurs between genes and the
+mutation operator occurs inside genes.</p>
+<p>If the current gene encodes a terminal symbol, it may be changed into
+another terminal symbol or into a function symbol. In the later case, the
+positions indicating the function arguments are randomly generated. If the
+current gene encodes a function, the gene may be mutated into a terminal
+symbol or into another function (function symbol and pointers towards ar-
+guments).</p>
+
+<h2>Main algorithm - steady state.</h2>
+
+<p>The MEP algorithm starts by creating a random population of individuals.</p>
+
+<p>The following steps are repeated until a given number of generations is
+reached:</p>
+<ul> 
+<li>
+Two parents are selected using a standard selection procedure. 
+</li>
+<li>
+The parents are recombined in order to obtain two offspring. 
+</li>
+<li>
+The offspring are mutated.
+</li>
+<li>
+Each offspring <i>O</i> replaces the worst individual
+<i>W</i> in the current population if <i>O</i> is better than <i>W</i>.
+</li>
+
+</ul>
+
+
+<p>Read more <a href="mep.pdf">here</a>.</p>
+		</td>
+	</tr>
+</table>
+
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10425243; 
+var sc_invisible=1; 
+var sc_security="e62193fa"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="shopify
+analytics" href="http://statcounter.com/shopify/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/10425243/0/e62193fa/1/"
+alt="shopify analytics"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+  
+</body>
+</html>
