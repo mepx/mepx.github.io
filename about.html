@@ -34,7 +34,20 @@
 		<td>
 	
 <p>Multi Expression Programming (MEP) is a method for automatic generation of computer programs. Particularly it can be used for generating mathematical expressions for data analysis (regression and classification). MEP differentiates from other GP techniques by encoding multiple solutions in the same chromosome.</p>
-		
+
+<p>MEP has several strong advantages compared to other techniques:</p>
+
+<ul>
+<li>
+It encodes multiple solution in the same chromosome. This means that the search space is better explored. Evaluating such chromosome is done (in most of the cases) in the same complexity as in the case of a single solution per chromosome.
+</li>
+
+<li>
+Evaluates the computer programs instruction by instruction and stores the partial results for all training data. In this way MEP has a huge speed without needing to work at low level (with processors registers) like Linear Genetic Programming does.
+</li>
+
+</ul>
+
 <h2>MEP representation</h2>
 
 MEP representation is not specific. Linear and tree-based representations have been tested (see the list of papers). Here we exemplify with a linear representation.
