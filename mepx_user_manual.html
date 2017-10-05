@@ -104,9 +104,11 @@
 			
 			<p>Last value on each line is the target (expected output). <em>Test data</em> can be without output (they may have one column less than <em>training data</em>).</p>
 			
-			<p>Currently the problems can have only 1 output. Files containing multiple outputs must be split accordingly (for instance <em>Building</em> problem from PROBEN1 which has 3 outputs (energy, hot and cold water)).</p>
+			<p>Currently the problems can have only 1 output (see below an exception for classication problems). Files containing multiple outputs must be split accordingly (for instance <em>Building</em> problem from PROBEN1 which has 3 outputs (energy, hot and cold water)).</p>
 			
 			<p>For classification problems, the last column may contain only values 0 or 1 (for binary classification) or values 0,1 ... (num_classes - 1) for more multi-class classification.</p>
+			
+			<p>It is also possible that the output for classification problems to be given in One-of-m format. For instance if the problem has 5 classes, the output will have 5 values, one of them being set to 1 and all others being set to 0. This type of format is loaded from files with <strong>dt</strong> extension.</p>
 			
 			<p><em>Training data</em> is compulsory. The others (<em>validation</em> and <em>test</em>) are optional.</p>
 			
@@ -129,8 +131,7 @@
 			<h3>Fitness function</h3>
 				<p>Fitness (or the error) is computed as follows:</p>
 				<p>For symbolic regression problems, the fitness is either <em>Mean Absolute Error</em> (sum of errors divided by the number of examples) or <em>Mean Squared Error</em> (sum of squared error divided by the number of examples).</p>
-				<p>For classification problems, the fitness is <em>Mean Classification Error</em> which is the number of incorrectly classified examples divided by the number of examples and multiplied by 100 (this is actually the percentage of incorrectly classified data).</p>
-				
+				<p>For classification problems the fitness is computed in multiple ways depending on problem or strategy. However what we report, in the resulted tables, is the percentage of incorrectly classified data (the number of incorrectly classified examples divided by the number of examples and multiplied by 100).</p>				
 
 			<a id="problem_type"></a>
 				<h3>Problem type</h3>
@@ -147,14 +148,23 @@
 
 <p>A problem with 2 classes can be solved by selecting either binary classification or multi-class classification.</p>
 
-<p>Binary classification means that is a threshold involved. Values less or equal to the threshold are classified as belonging to class 0 and the others are classified as belonging to class 1.</p>
-<p>For multi-class optimisation, the outputs are assigned to groups of genes and the gene encoding the expression having the first maximal value will provide class for that data (see more details here: <a href="https://groups.google.com/forum/#!topic/mepx/_lkIM7vMiws">google groups post</a>).</p>
+<p>Binary classification uses a threshold for makind distimction between classes. Values less or equal to the threshold are classified as belonging to class 0 and the others are classified as belonging to class 1.</p>
+<p>In the case of binary classification, the threshold is computed automatically (because of that, binary classification can be slower sometimes).</p>
 
-<p>In the case of binary classification, the threshold is computed automatically (because of that, binary classification is slower than multi-class classification).</p>
+<p>For multi-class classification there are 3 strategies:
+<ul>
+
+<li><strong>Winner takes all - fixed positions</strong> -the outputs are assigned to groups of genes and the gene encoding the expression having the first maximal value will provide class for that data (see more details here: <a href="https://groups.google.com/forum/#!topic/mepx/_lkIM7vMiws">google groups post</a>).</p>
+</li>,
+<li><strong>Winner takes all - fixed positions - smooth fitness</strong>
+</li>,
+<li><strong>Winner takes all - best genes</strong>
+</li>.
+</ul>
 
 <p>If <em>use validation set</em> is checked then, at each generation, the best individual is run against the validation set, and the best such individual (from those tested against the validation set) is the output of the program (and will be applied on the test data).</p>
 
-<p>It is possible to run the optimization on a smaller set of training data. In such case you have to set the <em>Random subset size</em> to a value smaller than the size of the training set.</p>
+<p>It is possible to run the optimization on a smaller set of training data. In such case you have to set the <em>Random subset size</em> to a value smaller than the size of the training set. The set is changed after <em>Num generations for which random subset is kept fixed</em>.</p>
 
 <a id="operators"></a>
 <h3>Operators (or functions)</h3>
@@ -195,9 +205,9 @@
 			<h2>Results</h2>
 			<p>The following results are displayed:</p>
 			<ul>
-				<li>error for the entire training, validation and test set.</li>
+				<li>error for the entire training, validation and test set. In the case of classification problems we display the number of incorrectly classified data in percent.</li>
 				<li>obtained value for each data in the training, validation and test set (also called <em>Model</em> or <em>Output</em>).</li>
-				<li>evolution of fitness for the best individual in the population and the population average.</li>
+				<li>evolution of fitness (this can be different from the number of incorrectly classified data) for the best individual in the population and the population average.</li>
 				<li>C source code of the best solution. This code can be simplified in order to show only instructions that generate the output (remember that not all genes of a chromosome participate to the solution - these genes are called introns). Note that there is no simplification in the case of multi-class classification.</li>
 			</ul>
 			
