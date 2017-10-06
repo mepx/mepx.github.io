@@ -24,7 +24,6 @@
 					<tr><td><a href="papers.html">Papers</a></td></tr>
 					<tr><td><a href="source_code.html">Source code</a></td></tr>
 					<tr><td><a><strong>MEPX Software</strong></a></td></tr>
-					<tr><td><a href="mepx_user_manual.html">MEPX user manual</a></td></tr>
 					<tr><td><a href="people.html">People</a></td></tr>
 					<tr><td><a href="what_is_new.html">News</a></td></tr>
 					<tr><td><a href="links.html">Links</a></td></tr>
@@ -39,7 +38,7 @@
 		</td>
 		<td></td>
 		<td>
-		<a href="mepx_user_manual.html">User manual</a>
+		<a href="#user_manual">User manual</a>
 		</td>
 		<td></td>
 		<td>
@@ -88,8 +87,191 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 		<p>Test projects (taken from PROBEN1 and other datasets) can be downloaded from: <a href="https://github.com/mepx/mepx-binaries">MEPX test projects on Github</a>. Just download a .xml file and press the <em>Load project</em> button from MEPX to load it.</p>
 
-		</td>
+		<a id="user_manual"></a>
+<h2>User manual</h2>
+		<ul>
+			<li>
+			<a href="#quick_start">Quick start</a>
+			</li>
+			<li>
+			<a href="#data">Data</a>
+			</li>
+			<li>
+			<a href="#parameters">Parameters</a>
+			<ul>
+			<li>
+			<a href="#fitness_function">Fitness function</a>
+			</li>
+			<li>
+			<a href="#problem_type">Problem type</a>
+			</li>
+			<li>
+			<a href="operators">Operators</a>
+			</li>
+			<li>
+			<a href="#algorithm">Algorithm</a>
+			</li>
+			<li>
+			<a href="#constants">Constants</a>
+			</li>
+			<li>
+			<a href="#runs">Runs</a>
+			</li>
+			</ul>
+			</li>
+			<li>
+			<a href="#results">Results</a>
+			</li>
+			<li>
+			<a href="#reporting_problems">Reporting problems</a>
+			</li>
+		</ul>
+		<a id="quick_start"></a>
+		<h2>Quick start</h2>
+			<ul>
+				<li>
+				Select <strong>Data</strong> panel.
+				</li>
+				<li>
+				Select <strong>Training data</strong> panel.
+				</li>
+				<li>
+					Press <strong>Load training data</strong> button and choose a <em>csv</em> or <em>txt</em> file. Data must be separated by blank space, tab or ;.
+				</li>
+				<li>
+					Select <strong>Parameters</strong> panel. Modify some parameters if needed. For instance, one could modify <strong>code length, numer of subpopulations, the (sub)population size, number of generations </strong> etc. Also specify the problem type (regression or binary classification).
+				</li>
+				<li>
+					Press <strong>Start</strong> button from the main toolbar.
+				</li>
+				<li>
+					Read the results from <strong>Results</strong> panel.
+				</li>
+				<li>
+				You can also save the entire project (data, parameters, results) by pressing the <strong>Save project</strong> from the main toolbar.
+				</li>
+				
+			</ul>
+			<a id="data"></a>
+			<h2>Data</h2>
+			<p>Data are loaded from <em>csv</em> or <em>txt</em> files. Data must be separated by blank space, tab or ;.</p>
+			
+			<p>Last value on each line is the target (expected output). <em>Test data</em> can be without output (they may have one column less than <em>training data</em>).</p>
+			
+			<p>Currently the problems can have only 1 output (see below an exception for classication problems). Files containing multiple outputs must be split accordingly (for instance <em>Building</em> problem from PROBEN1 which has 3 outputs (energy, hot and cold water)).</p>
+			
+			<p>For classification problems, the last column may contain only values 0 or 1 (for binary classification) or values 0,1 ... (num_classes - 1) for more multi-class classification.</p>
+			
+			<p>It is also possible that the output for classification problems to be given in One-of-m format. For instance if the problem has 5 classes, the output will have 5 values, one of them being set to 1 and all others being set to 0. This type of format is loaded from files with <strong>dt</strong> extension.</p>
+			
+			<p><em>Training data</em> is compulsory. The others (<em>validation</em> and <em>test</em>) are optional.</p>
+			
+			<p>You can also load alphanumerical values and then convert them to numerical values. You have several specialised buttons for that:</p>
+			<ul>
+			<li>
+			<strong>Replace values</strong> - which will replace some values (alphanumerical for instance with numerical). Find and replace works with <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_03">regular expressions</a> too.
+			</li>
+			<li>
+			<strong>To numeric</strong> - which will do an automatic conversion of alphanumerical values to integer values. First alphanumerical value will be converted to 0, the second (distinct one) to one and so on.
+			</li>
+			</ul>
+			
+			<p>The user can also scale numerical values to a given interval.</p>
+			
+			<a id="parameters"></a>
+			<h2>Parameters</h2>
+			
+			<a id="fitness_function"></a>
+			<h3>Fitness function</h3>
+				<p>Fitness (or the error) is computed as follows:</p>
+				<p>For symbolic regression problems, the fitness is either <em>Mean Absolute Error</em> (sum of errors divided by the number of examples) or <em>Mean Squared Error</em> (sum of squared error divided by the number of examples).</p>
+				<p>For classification problems the fitness is computed in multiple ways depending on problem or strategy. However what we report, in the resulted tables, is the percentage of incorrectly classified data (the number of incorrectly classified examples divided by the number of examples and multiplied by 100).</p>				
+
+			<a id="problem_type"></a>
+				<h3>Problem type</h3>
+
+<p>Can be:</p>
+
+<ul>
+
+<li>regression</li>, 
+<li>binary classification (with 2 classes)</li>,
+<li>multi-class classification (with 2 or more classes)</li>. 
+ 
+</ul> 
+
+<p>A problem with 2 classes can be solved by selecting either binary classification or multi-class classification.</p>
+
+<p>Binary classification uses a threshold for makind distimction between classes. Values less or equal to the threshold are classified as belonging to class 0 and the others are classified as belonging to class 1.</p>
+<p>In the case of binary classification, the threshold is computed automatically (because of that, binary classification can be slower sometimes).</p>
+
+<p>For multi-class classification there are 3 strategies:
+<ul>
+
+<li><strong>Winner takes all - fixed positions</strong> -the outputs are assigned to groups of genes and the gene encoding the expression having the first maximal value will provide class for that data (see more details here: <a href="https://groups.google.com/forum/#!topic/mepx/_lkIM7vMiws">google groups post</a>).</p>
+</li>,
+<li><strong>Winner takes all - fixed positions - smooth fitness</strong>
+</li>,
+<li><strong>Winner takes all - best genes</strong>
+</li>.
+</ul>
+
+<p>If <em>use validation set</em> is checked then, at each generation, the best individual is run against the validation set, and the best such individual (from those tested against the validation set) is the output of the program (and will be applied on the test data).</p>
+
+<p>It is possible to run the optimization on a smaller set of training data. In such case you have to set the <em>Random subset size</em> to a value smaller than the size of the training set. The set is changed after <em>Num generations for which random subset is kept fixed</em>.</p>
+
+<a id="operators"></a>
+<h3>Operators (or functions)</h3>
+
+<p>Classic operators +, -, *, ... nothing new here.</p>
+
+<p>Note that trigonometric operators work with radians.</p>
+
+<a id="algorithm"></a>
+<h3>The algorithm</h3>
+
+<p>MEPX uses a steady state model with multiple subpopulations. Steady-state means that inside one subpopulation, the worst individuals are replaced with newer ones (if the newer are better).</p>
+
+<p>User may specify the number of subpopulations. Each subpopulation will run independently from the others and, after one generation, they will exchange few individuals.</p>
+
+<p>Genetic operators (crossover and mutation) are classic ... nothing new here.</p>
+
+<p>It is possible to specify how often the variables, operators and constants should appear in a chromosome. This is done probabilistically. If you want more operators to appear, please increase the <em>operators probability</em>. More operators means more complex expressions.</p>
+
+<p>Sum of <em>operators probability</em>, <em>variables probability</em> and <em>constants probability</em> must be 1.</p>
+
+<a id="constants"></a>
+<h3>Constants</h3>
+
+<p>In order to enable constants, one must define a probability greater than 0 for constants. You cannot edit that probability directly, but <em>constants_probability</em> + <em>operators_probability</em> + <em>variables_probability</em> = 1. So if you define a value for probability for operators or variables such that their sum is less than 0, you will get a greater than 0 value for constants.</p>
+
+<p>Constants can be user defined or generated by the program (over a given interval). Generated constants can be kept fixed for all the evolution or they can also evolve. Mutation of constants is done by adding a random value between [-<em>max delta</em>, +<em>max_delta</em>].</p>
+
+<a id="runs"></a>
+<h3>Runs</h3>
+
+<p>Usually multiple runs must be performed for computing some statistics. It is also possible to specify the initial seed of the first run (consecutive runs will start from previous seed + 1).</p>
+
+<p><strong>Num threads</strong> - will run the subpopulations on multiple CPU cores. This can increase the speed of analysis significantly. If you have a quad core processor with hyper-threading, you may set the number of threads to 8. For best results make sure that the number of subpopulations is a multiple of number of threads.</p>
+
+
+			<a id="results"></a>
+			<h2>Results</h2>
+			<p>The following results are displayed:</p>
+			<ul>
+				<li>error for the entire training, validation and test set. In the case of classification problems we display the number of incorrectly classified data in percent.</li>
+				<li>obtained value for each data in the training, validation and test set (also called <em>Model</em> or <em>Output</em>).</li>
+				<li>evolution of fitness (this can be different from the number of incorrectly classified data) for the best individual in the population and the population average.</li>
+				<li>C source code of the best solution. This code can be simplified in order to show only instructions that generate the output (remember that not all genes of a chromosome participate to the solution - these genes are called introns). Note that there is no simplification in the case of multi-class classification.</li>
+			</ul>
+			
+			<a id="reporting_problems"></a>
+			<h2>Reporting problems, bugs, comments</h2>
+			<p>If you have problems with this program please save the project (by pressing the <em>Save Project</em> button from the main toolbar) and send it to <em>mihai.oltean@gmail.com</em></p>
+			</td>
 		</tr>
+		
+
 		</table>
 		
 		<!-- Start of StatCounter Code for Default Guide -->
