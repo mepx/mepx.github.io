@@ -7,13 +7,13 @@
 	</MASTER_PAD_VERSION_INFO>
 	<Company_Info>
 		<Company_Name>Oltean Mihai</Company_Name>
-		<Address_1>Gabriel Bethlen 5</Address_1>
+		<Address_1></Address_1>
 		<Address_2 />
-		<City_Town>Alba Iulia</City_Town>
+		<City_Town>Cugir</City_Town>
 		<State_Province />
-		<Zip_Postal_Code>510009</Zip_Postal_Code>
+		<Zip_Postal_Code>515600</Zip_Postal_Code>
 		<Country>Romania</Country>
-		<Company_WebSite_URL>http://www.mepx.org</Company_WebSite_URL>
+		<Company_WebSite_URL>https://www.mepx.org</Company_WebSite_URL>
 		<Contact_Info>
 			<Author_First_Name>Mihai</Author_First_Name>
 			<Author_Last_Name>Oltean</Author_Last_Name>
@@ -34,10 +34,10 @@
 	</Company_Info>
 	<Program_Info>
 		<Program_Name>MEPX</Program_Name>
-		<Program_Version>2018.04.04.0</Program_Version>
-		<Program_Release_Month>04</Program_Release_Month>
-		<Program_Release_Day>04</Program_Release_Day>
-		<Program_Release_Year>2018</Program_Release_Year>
+		<Program_Version>2020.12.05.0</Program_Version>
+		<Program_Release_Month>12</Program_Release_Month>
+		<Program_Release_Day>05</Program_Release_Day>
+		<Program_Release_Year>2020</Program_Release_Year>
 		<Program_Cost_Dollars />
 		<Program_Cost_Other_Code />
 		<Program_Cost_Other />
@@ -77,14 +77,14 @@
 	</Program_Descriptions>
 	<Web_Info>
 		<Application_URLs>
-			<Application_Info_URL>http://www.mepx.org/</Application_Info_URL>
+			<Application_Info_URL>https://www.mepx.org/</Application_Info_URL>
 			<Application_Order_URL />
-			<Application_Screenshot_URL>http://www.mepx.org/mepx_screenshot.png</Application_Screenshot_URL>
-			<Application_Icon_URL>http://www.mepx.org/mepx_icon.png</Application_Icon_URL>
-			<Application_XML_File_URL>http://www.mepx.org/mepx.xml</Application_XML_File_URL>
+			<Application_Screenshot_URL>https://www.mepx.org/mepx_screenshot.png</Application_Screenshot_URL>
+			<Application_Icon_URL>https://www.mepx.org/mepx_icon.png</Application_Icon_URL>
+			<Application_XML_File_URL>https://www.mepx.org/mepx.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://www.mepx.org/mepx_win64.zip</Primary_Download_URL>
+			<Primary_Download_URL>https://www.mepx.org/mepx_win64.zip</Primary_Download_URL>
 			<Secondary_Download_URL />
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
