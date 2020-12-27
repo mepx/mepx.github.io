@@ -219,9 +219,11 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 <p>It is possible to run the optimization on a smaller set of training data. In such case you have to set the <em>Random subset size</em> to a value smaller than the size of the training set. The set is changed after <em>Num generations for which random subset is kept fixed</em>.</p>
 
 <a id="operators"></a>
-<h3>Operators (or functions)</h3>
+<h3>functions (or operators)</h3>
 
-<p>Classic operators +, -, *, ... nothing new here.</p>
+<p>Classic arithmetic operators +, -, *, ... nothing new here.</p>
+
+<p>Do not confuse with genetic operators!</p>
 
 <p>Note that trigonometric operators work with radians.</p>
 
@@ -236,7 +238,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <p>It is possible to specify how often the variables, operators and constants should appear in a chromosome. This is done probabilistically. If you want more operators to appear, please increase the <em>operators probability</em>. More operators means more complex expressions.</p>
 
-<p>Sum of <em>operators probability</em>, <em>variables probability</em> and <em>constants probability</em> must be 1.</p>
+<p>Sum of <em>functions (operators) probability</em>, <em>variables probability</em> and <em>constants probability</em> must be 1. The constants' probability is computed automatically as 1 - the sum of the other 2 probabilities.</p>
 
 <a id="constants"></a>
 <h3>Constants</h3>
