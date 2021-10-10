@@ -136,7 +136,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 		</ul>
 		
 		<h2 id="quick_start">Quick start</h2>
-			<ul>
+			<ol>
 				<li>
 				Select <strong>Data</strong> panel.
 				</li>
@@ -159,7 +159,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				You can also save the entire project (data, parameters, results) by pressing the <strong>Save project</strong> from the main toolbar.
 				</li>
 				
-			</ul>
+			</ol>
 			
 			<h2 id="data">Data</h2>
 			
@@ -177,18 +177,25 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			
 			<p><em>Training data</em> is compulsory. The others (<em>validation</em> and <em>test</em>) are optional.</p>
 			
-			<p>You can also load alphanumerical values and then convert them to numerical values. You have several specialised buttons for that:</p>
+			<p>You can also load alphanumeric values.</p> 
+			
+			<img src = "mepx\alphanumeric.png" alt = "alphanumeric">
+
+			<p>Alphanumeric values must be converted to numerical values before running the analysis. You have several specialised buttons for that:</p>
+						
 			<ul>
 			<li>
-			<strong>Replace values</strong> - which will replace some values (alphanumeric with numeric). Find and replace works with <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_03">regular expressions</a> too.
+			<strong>To numeric</strong> - which will do an automatic conversion of alphanumerical values to integer values. First alphanumerical value will be converted to 0, the second (distinct one) to one and so on.
 			</li>
 			<li>
-			<strong>To numeric</strong> - which will do an automatic conversion of alphanumerical values to integer values. First alphanumerical value will be converted to 0, the second (distinct one) to one and so on.
+			<strong>Replace values</strong> - which will replace some values (alphanumeric with numeric). Find and replace works with <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_03">regular expressions</a> too.
 			</li>
 			</ul>
 			
 			<p>The user can also scale numerical values to a given interval.</p>
 			
+			<p>A description of the problem can also be given and it will be saved as the part of the project.</p>
+			<img src = "mepx\problem_description.png" alt = "problem description">
 			
 			<h2 id="parameters">Parameters</h2>
 			
