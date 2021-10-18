@@ -162,7 +162,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			</li>
 		</ul>
 		
-		<h2 id="quick_start">Quick start</h2>
+		<h2 id="quick_start">1. Quick start</h2>
 			<ol>
 				<li>
 				Select <strong>Data</strong> panel.
@@ -188,7 +188,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				
 			</ol>
 			
-			<h2 id="data">Data</h2>
+			<h2 id="data">2. Data</h2>
 			
 			<img src = "mepx\data.png" alt = "data">
 			
@@ -226,7 +226,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			<p>A description of the problem can also be given and it will be saved as the part of the project.</p>
 			<img src = "mepx\problem_description.png" alt = "problem description">
 			
-			<h2 id="parameters">Parameters</h2>
+			<h2 id="parameters">3. Parameters</h2>
 			
 
 			<h3 id="problem_type">Problem type</h3>
@@ -327,7 +327,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <p><strong>Num threads</strong> - Specify the number of processor's cores used for running the algorithm. Each subpopulations is run on a thread. This can increase the speed of analysis significantly. If you have a quad core processor with hyper-threading, you may set the number of threads to 8. For best results make sure that the number of subpopulations is a multiple of the number of threads.</p>
 
-			<h2 id="results">Results</h2>
+			<h2 id="results">4. Results</h2>
 			<p>The following results are displayed:</p>
 			
 			
@@ -356,7 +356,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				</p>
 				<img src = "mepx\evolution.png" alt = "evolution">
 				
-			<h2 id="format_of_project_files">The format of the project files</h2>
+			<h2 id="format_of_project_files">5. The format of the project files</h2>
 
 				<p>Projects can be saved/loaded to/from <em>.xml</em> files which is the default format of the <b>MEPX</b>.</p>
 <p>The <i>xml</i> file has a tree structure. The root node is named <i>project</i>.</p>
@@ -381,7 +381,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 <p><br></p>
 
 		
-		<h2 id="command_line">Running from command line</h2>
+		<h2 id="command_line">6. Running from command line</h2>
 		
 		<p><b>MEPX</b> can be run in dual mode:<p>
 
@@ -410,7 +410,7 @@ If you supply with 2 or 3 parameters (see below), the program will create no int
 <p><i>Note</i>: Last parameter is optional and is used only if you want to stop the search process earlier.</p>
 
 
-<h2 id="embedding_into_other_apps">Embedding the MEPX in your application</h2>
+<h2 id="embedding_into_other_apps">7. Embedding the MEPX in your application</h2>
 
 <p>If you want to embed the program in your <b>Windows</b> application you can create a new process using the <a href = "https://msdn.microsoft.com/en-us/library/windows/desktop/ms682425(v=vs.85).aspx">CreateProcess</a> function from <b>Windows API</b>.</p>
 
@@ -419,7 +419,7 @@ If you supply with 2 or 3 parameters (see below), the program will create no int
 <p>The search process can take few miliseconds or minutes or hours depending on the data to be analyzed. If you want to stop the search process before it naturally ends, you should create a file (<em>stop_file_name</em>)) which you specified as the last parameter of the command line. The program will check for the existence of that file and will stop the search when that file is found. Make sure that you delete this file if you previously created it with another search!</p>
 
 			
-			<h2 id="reporting_problems">Reporting problems, bugs, comments</h2>
+			<h2 id="reporting_problems">8. Reporting problems, bugs, comments</h2>
 			<p>If you have problems with this program please save the project (by pressing the <em>Save Project</em> button from the main toolbar) and send it to <em>mihai.oltean@gmail.com</em></p>
 			</td>
 		</tr>
