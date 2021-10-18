@@ -104,15 +104,26 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				</li>
 				<li>
 				<a href="#fitness_function">Fitness function</a>
+				<ul>
+					<li>
+					<a href="#fitness_function_regression">Regression</a>
+					</li>
+					<li>
+					<a href="#fitness_function_classification">Classification</a>
+					</li>
+				</ul>
 				</li>
 				<li>
-				<a href="#operators">Operators</a>
+				<a href="#other_params_related_to_data">Other parameters related to data</a>
 				</li>
 				<li>
-				<a href="#algorithm">Algorithm</a>
+				<a href="#operators">Mathematical operators</a>
 				</li>
 				<li>
 				<a href="#constants">Constants</a>
+				</li>
+				<li>
+				<a href="#algorithm">Algorithm</a>
 				</li>
 				<li>
 				<a href="#runs">Runs</a>
@@ -121,6 +132,20 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			</li>
 			<li>
 			<a href="#results">Results</a>
+			<ul>
+				<li>
+				<a href="#error">Error</a>
+				</li>
+				<li>
+				<a href="#model">Model</a>
+				</li>
+				<li>
+				<a href="#code">Source code</a>
+				</li>
+				<li>
+				<a href="#evolution">Evolution</a>
+				</li>			
+			</ul>
 			</li>
 			<li>
 			<a href="#format_of_project_files">The format of the project files</a>
@@ -211,14 +236,23 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <ul>
 
-<li>regression</li>
-<li>binary classification (with 2 classes)</li>
-<li>multi-class classification (with 2 or more classes)</li>
+<li>Regression (sometimes called function fitting)</li>
+<li>Binary classification (with 2 classes)</li>
+<li>Multi-class classification (with 2 or more classes)</li>
  
 </ul>
 
-<h3 id="fitness_function">Fitness function</h3>
+<h3 id="fitness_function">Error (Fitness) function</h3>
 <img src = "mepx\error_measure.png" alt = "error measure">
+
+<p>The algorithm will try to minimize the error.</p>
+
+<h4 id="fitness_function_regression">Regression</h4>
+
+	<p>For symbolic regression problems, the fitness is either <em>Mean Absolute Error</em> (sum of errors divided by the number of examples) or <em>Mean Squared Error</em> (sum of squared error divided by the number of examples).</p>
+
+<h4 id="fitness_function_classification">Classification</h4>
+	<p>For classification problems the fitness is computed in multiple ways depending on problem or strategy. However what we report, in the resulted tables, is the percentage of incorrectly classified data (the number of incorrectly classified examples divided by the number of examples and multiplied by 100).</p>				
 
 <p>A classification problem with 2 classes can be solved by selecting either binary classification or multi-class classification.</p>
 
@@ -237,37 +271,24 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 </li>
 </ul>
 
-	<p>Fitness (or the error) is computed as follows:</p>
-	<p>For symbolic regression problems, the fitness is either <em>Mean Absolute Error</em> (sum of errors divided by the number of examples) or <em>Mean Squared Error</em> (sum of squared error divided by the number of examples).</p>
-	<p>For classification problems the fitness is computed in multiple ways depending on problem or strategy. However what we report, in the resulted tables, is the percentage of incorrectly classified data (the number of incorrectly classified examples divided by the number of examples and multiplied by 100).</p>				
 
-<h3 id="other_params_related_to_data">Others</h3>
+<h3 id="other_params_related_to_data">Other parameters related to data</h3>
 
 <p>If <em>use validation set</em> is checked then, at each generation, the best individual is run against the validation set, and the best such individual (from those tested against the validation set) is the output of the program (and will be applied on the test data).</p>
 
 <p>It is possible to run the optimization on a smaller set of training data. In such case you have to set the <em>Random subset size</em> to a value smaller than the size of the training set. The set is changed after <em>Num generations for which random subset is kept fixed</em>.</p>
 
-<h3 id="operators">Functions (or operators)</h3>
+<h3 id="operators">Functions (or mathematical operators)</h3>
+
+<p>Here is the list of operators that can appear in the result.</p>
 
 <img src = "mepx\functions.png" alt = "functions">
 
-<p>Classic arithmetic operators +, -, *, ... nothing new here.</p>
+<p>These are classic arithmetic operators +, -, *, ... nothing new here.</p>
 
-<p>Do not confuse them with genetic operators!</p>
+<p>Do not confuse them with genetic operators used by the <a href="#algorithm">MEP algorithm</a>.</p>
 
 <p>Note that trigonometric operators work with radians.</p>
-
-<h3 id="algorithm">The algorithm</h3>
-
-<p>MEPX uses a steady state model with multiple subpopulations. Steady-state means that inside one subpopulation, the worst individuals are replaced with newer ones (if the newer are better).</p>
-
-<p>User may specify the number of subpopulations. Each subpopulation will run independently from the others and, after one generation, they will exchange few individuals.</p>
-
-<p>Genetic operators (crossover and mutation) are classic ... nothing new here.</p>
-
-<p>It is possible to specify how often the variables, operators and constants should appear in a chromosome. This is done probabilistically. If you want more operators to appear, please increase the <em>operators probability</em>. More operators mean more complex expressions.</p>
-
-<p>Sum of <em>functions (operators) probability</em>, <em>variables probability</em> and <em>constants probability</em> must be 1. The constants' probability is computed automatically as 1 - the sum of the other 2 probabilities.</p>
 
 
 <h3 id="constants">Constants</h3>
@@ -278,46 +299,63 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <p>Constants can be user defined or generated by the program (over a given interval). Generated constants can be kept fixed for all the evolution or they can also evolve. Mutation of constants is done by adding a random value between [-<em>max delta</em>, +<em>max_delta</em>].</p>
 
+<h3 id="algorithm">The algorithm</h3>
+
+<p>The data analysis cannot be made instanteniously due to the complexity of the problem. This is why a special algorithm inspired from biology is used. The algorithm works with a multiple potential solutions that are modified (hopefully improved) along a number of generations.</p>
+
+<p>MEPX uses a steady state model with multiple subpopulations. Steady-state means that inside one subpopulation, the worst individuals are replaced with newer ones (if the newer are better).</p>
+
+<p>Parameters for the algoritm are specified in the below image:</p>
+
+<img src = "mepx\parameters.png" alt = "parameters">
+
+<p>User may specify the number of subpopulations. Each subpopulation will run independently from the others and, after one generation, they will exchange few individuals.</p>
+
+<p>Genetic operators (crossover and mutation) are classic ... nothing new here.</p>
+
+<p>It is possible to specify how often the variables, operators and constants should appear in a chromosome. This is done probabilistically. If you want more operators to appear, please increase the <em>operators probability</em>. More operators mean more complex expressions.</p>
+
+<p>Sum of <em>functions (operators) probability</em>, <em>variables probability</em> and <em>constants probability</em> must be 1. The constants' probability is computed automatically as 1 - the sum of the other 2 probabilities.</p>
+
 <h3 id="runs">Runs</h3>
 
 <img src = "mepx\runs.png" alt = "runs">
 
-<p>Usually multiple runs must be performed for computing some statistics. It is also possible to specify the initial seed of the first run (consecutive runs will start from the previous seed + 1).</p>
+<p><strong>Random seed</strong> - It is also possible to specify the initial seed of the first run (consecutive runs will start from the previous seed + 1).</p>
 
-<p><strong>Num threads</strong> - will run the subpopulations on multiple CPU cores. This can increase the speed of analysis significantly. If you have a quad core processor with hyper-threading, you may set the number of threads to 8. For best results make sure that the number of subpopulations is a multiple of the number of threads.</p>
+<p><strong>Num runs</strong> - Usually multiple runs must be performed for computing some statistics.</p>
+
+<p><strong>Num threads</strong> - Specify the number of processor's cores used for running the algorithm. Each subpopulations is run on a thread. This can increase the speed of analysis significantly. If you have a quad core processor with hyper-threading, you may set the number of threads to 8. For best results make sure that the number of subpopulations is a multiple of the number of threads.</p>
 
 			<h2 id="results">Results</h2>
 			<p>The following results are displayed:</p>
-			<ul>
-				<li>
+			
+			
+				<h3 id = "error">Error</h3>
 				<p>
 				Error for the entire training, validation and test set. In the case of classification problems we display the number of incorrectly classified data in percent.
 				<p>
 				<img src = "mepx\error.png" alt = "error">
-				</li>
-				<li>
+				
+				<h3 id = "model">Model</h3>
 				<p>
 				Obtained value for each data in the training, validation and test set (also called <em>Model</em> or <em>Output</em>).
 				</p>
 				<img src = "mepx\model_target_error.png" alt = "model">
-				</li>
-				<li>
-				<p>
-				Evolution of fitness (this can be different from the number of incorrectly classified data) for the best individual in the population and the population average.
-				</p>
-				<img src = "mepx\evolution.png" alt = "evolution">
 				
-				</li>
 				
-				<li>
+				<h3 id = "code">Source code</h3>
 				<p>
 				<b>C</b> source code of the best solution. This code can be simplified in order to show only instructions that generate the output (remember that not all genes of a chromosome participate to the solution - these genes are called introns). Note that there is no simplification in the case of multi-class classification.
 				</p>
 				<img src = "mepx\code.png" alt = "source code">
 				
-				</li>
-			</ul>
-			
+				<h3 id = "evolution">Evolution</h3>
+				<p>
+				Evolution of fitness (this can be different from the number of incorrectly classified data) for the best individual in the population and the population average.
+				</p>
+				<img src = "mepx\evolution.png" alt = "evolution">
+				
 			<h2 id="format_of_project_files">The format of the project files</h2>
 
 				<p>Projects can be saved/loaded to/from <em>.xml</em> files which is the default format of the <b>MEPX</b>.</p>
