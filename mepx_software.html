@@ -198,7 +198,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			
 			<h2 id="data">2. Data</h2>
 			
-			<img src = "mepx\data.png" alt = "data">
+			<img src = "mepx/data.png" alt = "data">
 			
 			<p>Data are loaded from <em>csv</em> or <em>txt</em> files. Data must be separated by <i>blank space</i>, <i>tab</i> or <i>;</i>.</p>
 			
@@ -214,11 +214,11 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			
 			<p>You can also load alphanumeric values.</p> 
 			
-			<img src = "mepx\alphanumeric.png" alt = "alphanumeric">
+			<img src = "mepx/alphanumeric.png" alt = "alphanumeric">
 
 			<p>Alphanumeric values must be converted to numerical values before running the analysis. You have several specialised buttons for that:</p>
 
-			<img src = "mepx\advanced.png" alt = "advanced controls">
+			<img src = "mepx/advanced.png" alt = "advanced controls">
 			
 			<ul>
 			<li>
@@ -232,14 +232,14 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			<p>The user can also scale numerical values to a given interval.</p>
 			
 			<p>A description of the problem can also be given and it will be saved as the part of the project.</p>
-			<img src = "mepx\problem_description.png" alt = "problem description">
+			<img src = "mepx/problem_description.png" alt = "problem description">
 			
 			<h2 id="parameters">3. Parameters</h2>
 			
 
 			<h3 id="problem_type">3.1. Problem type</h3>
 
-<img src = "mepx\problem.png" alt = "problem type">
+<img src = "mepx/problem.png" alt = "problem type">
 <p>Can be:</p>
 
 <ul>
@@ -251,7 +251,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 </ul>
 
 <h3 id="fitness_function">3.2. Error (Fitness) function</h3>
-<img src = "mepx\error_measure.png" alt = "error measure">
+<img src = "mepx/error_measure.png" alt = "error measure">
 
 <p>The algorithm will try to minimize the error.</p>
 
@@ -290,7 +290,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <p>Here is the list of operators that can appear in the result.</p>
 
-<img src = "mepx\functions.png" alt = "functions">
+<img src = "mepx/functions.png" alt = "functions">
 
 <p>These are classic arithmetic operators +, -, *, ... nothing new here.</p>
 
@@ -301,7 +301,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <h3 id="constants">3.5. Constants</h3>
 
-<img src = "mepx\constants.png" alt = "constants">
+<img src = "mepx/constants.png" alt = "constants">
 
 <p>In order to enable constants, one must define a probability greater than 0 for constants. You cannot edit that probability directly, but <em>constants_probability</em> + <em>operators_probability</em> + <em>variables_probability</em> = 1. So if you define a value for probability for operators or variables such that their sum is less than 0, you will get a greater than 0 value for constants.</p>
 
@@ -315,7 +315,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <p>Parameters for the algoritm are specified in the below image:</p>
 
-<img src = "mepx\parameters.png" alt = "parameters">
+<img src = "mepx/parameters.png" alt = "parameters">
 
 <p>User may specify the number of subpopulations. Each subpopulation will run independently from the others and, after one generation, they will exchange few individuals.</p>
 
@@ -327,7 +327,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <h3 id="runs">3.7. Runs</h3>
 
-<img src = "mepx\runs.png" alt = "runs">
+<img src = "mepx/runs.png" alt = "runs">
 
 <p><strong>Random seed</strong> - It is also possible to specify the initial seed of the first run (consecutive runs will start from the previous seed + 1).</p>
 
@@ -343,25 +343,25 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				<p>
 				Error for the entire training, validation and test set. In the case of classification problems we display the number of incorrectly classified data in percent.
 				<p>
-				<img src = "mepx\error.png" alt = "error">
+				<img src = "mepx/error.png" alt = "error">
 				
 				<h3 id = "model">4.2. Model</h3>
 				<p>
 				Obtained value for each data in the training, validation and test set (also called <em>Model</em> or <em>Output</em>).
 				</p>
-				<img src = "mepx\model_target_error.png" alt = "model">
+				<img src = "mepx/model_target_error.png" alt = "model">
 				
 				
 				<h3 id = "code">4.3. Source code</h3>
 				<p>
 				<b>C</b> or <b>Excel VBA</b> source code of the best solution. This code can be simplified in order to show only instructions that generate the output (remember that not all genes of a chromosome participate to the solution - these genes are called introns). Note that there is no simplification in the case of multi-class classification.
 				</p>
-				<img src = "mepx\code.png" alt = "source code in C++">
+				<img src = "mepx/code.png" alt = "source code in C++">
 				<p><b>Excel VBA</b> code can be used to create a custom formula in <b>Excel</b>.</p>
-				<img src = "mepx\vba.png" alt = "Excel VBA code">
+				<img src = "mepx/vba.png" alt = "Excel VBA code">
 
 				<p>One can analyze new data directly from <b>Excel</b> with the formula discovered by MEPX.</p>
-				<img src = "mepx\mepx_excel_formula.png" alt = "MEPX Excel formula">
+				<img src = "mepx/mepx_excel_formula.png" alt = "MEPX Excel formula">
 				
 				<p>A movie with this feature is <a href="https://youtu.be/NZXxxJKto_4">here on YouTube</a>.</p>
 				
@@ -369,7 +369,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				<p>
 				Evolution of fitness (this can be different from the number of incorrectly classified data) for the best individual in the population and the population average.
 				</p>
-				<img src = "mepx\evolution.png" alt = "evolution">
+				<img src = "mepx/evolution.png" alt = "evolution">
 				
 			<h2 id="format_of_project_files">5. The format of the project files</h2>
 
