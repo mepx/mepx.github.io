@@ -273,7 +273,16 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <h4 id="fitness_function_regression">Symbolic Regression</h4>
 
-	<p>For symbolic regression problems, the fitness is either <em>Mean Absolute Error</em> (sum of errors divided by the number of examples) or <em>Mean Squared Error</em> (sum of squared error divided by the number of examples).</p>
+	<p>For symbolic regression problems, the fitness is:<p>
+	<ul>
+	<li>
+	<em>Mean Absolute Error</em> (sum of absolute errors for each data (that is the difference between <em>Target</em> and the actual <em>Output</em>) divided by the number of examples) 
+	</li>
+	or 
+	<li>
+	<em>Mean Squared Error</em> (sum of squared errors divided by the number of examples).</p>
+	</li>
+	</ul>
 
 <h4 id="fitness_function_classification">Classification</h4>
 	<p>For classification problems the fitness is computed in multiple ways depending on problem or strategy. However what we report, in the resulted tables, is the percentage of incorrectly classified data (the number of incorrectly classified examples divided by the number of examples and multiplied by 100).</p>				
@@ -351,6 +360,8 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 <p>The data analysis cannot be made instanteniously due to the complexity of the problem. This is why a special algorithm inspired from biology is used. The algorithm works with a multiple potential solutions that are modified (hopefully improved) along a number of generations.</p>
 
 <p>MEPX uses a steady state model with multiple subpopulations. Steady-state means that inside one subpopulation, the worst individuals are replaced with newer ones (if the newer are better).</p>
+
+<p>At the end of each generation, the best individual in that generation, is tested against the <em>Validation set</em>. The best on <em>Validation</em> is retained and tested, at the end of the search process against <em>Test set</em>.</p>
 
 <p>Parameters for the algoritm are specified in the below image:</p>
 
