@@ -264,6 +264,8 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 			<p><em>Import data window</em> helps user to specify which list separator, decimal separators and the number of classes (only for the <em>one-of-m</em> format of the output)</p>
 			<p>Values must be separated by <i>blank space</i>, <i>tab</i>, <i>dot comma (;)</i> or <i>comma (,)</i>.</p>
+			<p>Values cannot be separate by multiple different separators (example comma and space).</p>
+			<p>Consecutive separators are treated as one.</p>
 
 			<p>If the separators are correct, the data will appear in tabular format, as bellow:</p>
 			<img src = "mepx/import_data_correct_separator.png" alt = "import data correct separator">
