@@ -176,7 +176,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			</li>
 			
 			<li>
-			<a href="#command_line">Running from command line</a>
+			<a href="#command_line">Running from the command line</a>
 			</li>
 			
 			<li>
@@ -201,16 +201,16 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				Select <strong>Training data</strong> panel.
 				</li>
 				<li>
-					Press <strong>Load training data</strong> button and choose a <em>csv</em> or <em>txt</em> file. Data must be separated by blank space, tab or ;.
+					Press the <strong>Load training data</strong> button and choose a <em>csv</em> or <em>text</em> file. Data must be separated by blank space, tab, comma or dot comma.
 				</li>
 				<li>
-					Select <strong>Parameters</strong> panel. Modify some parameters if needed. For instance, one could modify <strong>code length, number of subpopulations, the (sub)population size, number of generations </strong> etc. Also specify the problem type (regression or binary classification).
+					Select <strong>Parameters</strong> panel. Modify some parameters if needed. For instance, one could modify <strong>code length, number of subpopulations, the (sub)population size, number of generations </strong> etc. Also, specify the problem type (regression or binary classification).
 				</li>
 				<li>
-					Press <strong>Start</strong> button from the main toolbar.
+					Press the <strong>Start</strong> button from the main toolbar.
 				</li>
 				<li>
-					Read the results from <strong>Results</strong> panel.
+					Read the results from the <strong>Results</strong> panel.
 				</li>
 				<li>
 				You can also save the entire project (data, parameters, results) by pressing the <strong>Save project</strong> from the main toolbar.
@@ -222,33 +222,33 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			
 			<img src = "mepx/data.png" alt = "data">
 			
-			<p>Analysis is performed on tabular data. Data must be complete (no missing values).</p>
+			<p>The analysis is performed on tabular data. Data must be complete (no missing values).</p>
 			
-			<p>There are 3 different types of data: <em>Training</em>, <em>Validation</em> and <em>Test</em>. Training stage of the algorith is performed on <em>Training</em> and (optionally on <em>Validation</em> data). At the end of the search process the best solution is tested against <em>Test</em> data.</p>
+			<p>There are 3 different types of data: <em>Training</em>, <em>Validation</em>, and <em>Test</em>. The training stage of the algorithm is performed on <em>Training</em> and (optionally on <em>Validation</em> data). At the end of the search process, the best solution is tested against <em>Test</em> data.</p>
 						
-			<p>Last value (<em>Target</em> column) on each row is the target (expected output). <em>Test data</em> can be without output (they may have one column less than <em>training data</em>).</p>
+			<p>The last value (<em>Target</em> column) on each row is the target (expected output). <em>Test data</em> can be without an output (they may have one column less than <em>training data</em>).</p>
 			
-			<p>Currently the problems can have only 1 output (see below an exception for classification problems). Files containing multiple outputs must be split accordingly (for instance <em>Building</em> problem from PROBEN1 which has 3 outputs (energy, hot and cold water)).</p>
+			<p>Currently, the problems can have only 1 output (see below an exception for classification problems). Files containing multiple outputs must be split accordingly (for instance <em>Building</em> problem from PROBEN1 which has 3 outputs (energy, hot and cold water)).</p>
 			
 			<p>For classification problems, the last column may contain only values 0 or 1 (for binary classification) or values 0, 1 ... (num_classes - 1) for more multi-class classification.</p>
 			
-			<p>It is also possible that the output for classification problems to be given in <i>one-of-m</i> format. For instance if the problem has 5 classes, the output will have 5 values, one of them being set to 1 and all others being set to 0 (example: 0 1 0 0 0).</p>
+			<p>It is also possible that the output for classification problems to be given in <i>one-of-m</i> format. For instance, if the problem has 5 classes, the output will have 5 values, one of them being set to 1 and all others being set to 0 (example: 0 1 0 0 0).</p>
 
 			<p>For time series problems, the data must have 1 column only.</p>
 			
 			<p><em>Training data</em> is compulsory. The others (<em>validation</em> and <em>test</em>) are optional.</p>
 			
-			<p>Alphanumeric values can be loaded into program.</p> 
+			<p>Alphanumeric values can be loaded into MEPX.</p> 
 			
 			<img src = "mepx/alphanumeric.png" alt = "alphanumeric">
 
-			<p>Alphanumeric values must be converted to numerical values before running the analysis. You have several specialised buttons for that:</p>
+			<p>Alphanumeric values must be converted to numerical values before running the analysis. You have several specialized buttons for that:</p>
 
 			<img src = "mepx/advanced.png" alt = "advanced controls">
 			
 			<ul>
 			<li>
-			<strong>To numeric</strong> - which will do an automatic conversion of alphanumerical values to integer values. First alphanumerical value will be converted to 0, the second (distinct one) to one and so on.
+			<strong>To numeric</strong> - which will do an automatic conversion of alphanumerical values to integer values. The first alphanumerical value will be converted to 0, the second (distinct one) to one, and so on.
 			</li>
 			<li>
 			<strong>Replace values</strong> - which will replace some values (alphanumeric with numeric). Find and replace works with <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_03">regular expressions</a> too.
@@ -262,9 +262,9 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 			<img src = "mepx/import_data_incorrect_separator.png" alt = "import_data_incorrect_separator">
 
-			<p><em>Import data window</em> helps user to specify which list separator, decimal separators and the number of classes (only for the <em>one-of-m</em> format of the output)</p>
+			<p><em>Import data window</em> helps the user to specify which list separator, decimal separators and the number of classes (only for the <em>one-of-m</em> format of the output)</p>
 			<p>Values must be separated by <i>blank space</i>, <i>tab</i>, <i>dot comma (;)</i> or <i>comma (,)</i>.</p>
-			<p>Values cannot be separate by multiple different separators (example comma and space).</p>
+			<p>Values cannot be separated by multiple different separators (for example comma and space).</p>
 			<p>Consecutive separators are treated as one.</p>
 
 			<p>If the separators are correct, the data will appear in tabular format, as bellow:</p>
@@ -273,13 +273,13 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			<p>For classification data with the output in <em>one-of-m</em> format, the user must specify the correct number of classes.</p>
 			<img src = "mepx/import_data_classification.png" alt = "import data classification one of m">
 			
-			<p>This setting has no effect in the <em>Import data window</em>, but, in the main page, the <em>Target</em> column is computed and displayed correctly:</p>
+			<p>This setting has no effect in the <em>Import data window</em>, but, on the main page, the <em>Target</em> column is computed and displayed correctly:</p>
 			<img src = "mepx/classification_data_after_import.png" alt = "classification data after import">
 
 			
 			<h3 id="problem_description">2.2 Problem description</h3>
 			
-			<p>A description of the problem can also be given and it will be saved as the part of the project.</p>
+			<p>A description of the problem can also be given and it will be saved as part of the project.</p>
 			<img src = "mepx/problem_description.png" alt = "problem description">
 			
 			<h2 id="parameters">3. Parameters</h2>
@@ -318,17 +318,17 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 	</ul>
 
 <h4 id="fitness_function_classification">Classification</h4>
-	<p>For classification problems the fitness is computed in multiple ways depending on problem or strategy. However what we report, in the resulted tables, is the percentage of incorrectly classified data (the number of incorrectly classified examples divided by the number of examples and multiplied by 100).</p>				
+	<p>For classification, problems the fitness is computed in multiple ways depending on the problem or strategy. However what we report, in the resulting tables, is the percentage of incorrectly classified data (the number of incorrectly classified examples divided by the number of examples and multiplied by 100).</p>				
 
 <p>A classification problem with 2 classes can be solved by selecting either binary classification or multi-class classification.</p>
 
-<p>Binary classification uses a threshold for making distinction between classes. Values less or equal to the threshold are classified as belonging to class 0 and the others are classified as belonging to class 1.</p>
+<p>Binary classification uses a threshold for making the distinction between classes. Values less or equal to the threshold are classified as belonging to class 0 and the others are classified as belonging to class 1.</p>
 <p>In the case of binary classification, the threshold is computed automatically (because of that, binary classification can be slower sometimes).</p>
 
 <p>For multi-class classification there are 3 strategies:</p>
 <ul>
 
-<li><strong>Winner takes all - fixed positions</strong> -the outputs are assigned to groups of genes and the gene encoding the expression having the first maximal value will provide class for that data (see more details here: <a href="https://groups.google.com/forum/#!topic/mepx/_lkIM7vMiws">google groups post</a>).
+<li><strong>Winner takes all - fixed positions</strong> -the outputs are assigned to groups of genes and the gene encoding the expression having the first maximal value will provide the class for that data (see more details here: <a href="https://groups.google.com/forum/#!topic/mepx/_lkIM7vMiws">google groups post</a>).
 
 </li>
 <li><strong>Winner takes all - fixed positions - smooth fitness</strong>
@@ -349,9 +349,10 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <h3 id="other_params_related_to_data">3.3. Other parameters related to data</h3>
 
-<p>If <em>use validation set</em> is checked then, at each generation, the best individual is run against the validation set, and the best such individual (from those tested against the validation set) is the output of the program (and will be applied on the test data).</p>
+<p>If <em>use validation set</em> is checked then, at each generation, the best individual on <em>Training</em> is run against the <em>Validation</em> data, and the best such individual (from those tested against the <em>validation</em> set) is the output of the program (and will be applied on the <em>Test data</em>).</p>
+<p>Note that, when the <em>Validation</em> data is used, the output of the MEPX is the best solution on <em>Validation</em>, not the best on <em>Training</em>. During evolution, one may see improvements on <em>Training error</em>, but the final solution might not perform so well on <em>Training</em> because the best for <em>Validation</em> is the final solution. Still, the <em>Validation</em> data is useful to prevent overfitting on <em>Training</em>.</p>
 
-<p>It is possible to run the optimization on a smaller set of training data. In such case you have to set the <em>Random subset size</em> to a value smaller than the size of the training set. The set is changed after <em>Num generations for which random subset is kept fixed</em>.</p>
+<p>It is possible to run the optimization on a smaller set of <em>Training</em> data. In such case, you have to set the <em>Random subset size percent</em> to a value smaller than 100%. The training set is changed after <em>Num generations for which random subset is kept fixed</em>.</p>
 
 <h3 id="time_series_parameters">3.4. Time series parameters</h3>
 
@@ -359,11 +360,11 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <p>Data for time series can have 1 column only.</p> 
 
-<p>The formula is trained on the Training set and then it is used to predict values on the Validation set. It is highly recommended to have Validation set, otherwise the results can be poor.</p>
+<p>The formula is trained on the <em>Training</em> set and then it is used to predict values on the <em>Validation</em> set. It is highly recommended to have <em>Validation</em> set, otherwise, the results can be poor due to overfitting on <em>Training</em>.</p>
 
-<p>MEPX will internally transform 1 column of training data into a matrix having <em>window size</em> + 1 columns. (the last column is the Target).</p>
+<p>MEPX will internally transform 1 column of <em>training</em> data into a matrix having <em>window size</em> + 1 columns. (the last column is the Target).</p>
 
-<p>After discovering of the formula, it can be used either to predict values on the <em>Test set</em> or to predict future values, depending on the <em>Time series mode</em> setting.</p>
+<p>After discovering the formula, it can be used either to predict values on the <em>Test set</em> or to predict future values, depending on the <em>Time series mode</em> setting.</p>
 
 <p>The user can also specify how many future values to predict.</p>
 
@@ -384,29 +385,29 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <img src = "mepx/constants.png" alt = "constants">
 
-<p>In order to enable constants, one must define a probability greater than 0 for constants. You cannot edit that probability directly, but <em>constants_probability</em> + <em>operators_probability</em> + <em>variables_probability</em> = 1. So if you define a value for probability for operators or variables such that their sum is less than 0, you will get a greater than 0 value for constants.</p>
+<p>To enable constants, one must define a probability greater than 0 for constants. You cannot edit that probability directly, but <em>constants_probability</em> + <em>operators_probability</em> + <em>variables_probability</em> = 1. So if you define a value for probability for operators or variables such that their sum is less than 0, you will get a greater than 0 value for constants.</p>
 
-<p>Constants can be user defined or generated by the program (over a given interval). Generated constants can be kept fixed for all the evolution or they can also evolve. Mutation of constants is done by adding a random value between [-<em>max delta</em>, +<em>max_delta</em>].</p>
+<p>Constants can be user-defined or generated by the program (over a given interval). Generated constants can be kept fixed for all the evolution or they can also evolve. Mutation of constants is done by adding a random value between [-<em>max delta</em>, +<em>max_delta</em>].</p>
 
 <h3 id="algorithm">3.7. The algorithm</h3>
 
-<p>The data analysis cannot be made instanteniously due to the complexity of the problem. This is why a special algorithm inspired from biology is used. The algorithm works with a multiple potential solutions that are modified (hopefully improved) along a number of generations.</p>
+<p>The data analysis cannot be made instantaneously due to the complexity of the problem. This is why a special algorithm inspired by biology is used. The algorithm works with multiple potential solutions that are modified (hopefully improved) along with a number of generations.</p>
 
 <p>MEPX uses a steady state model with multiple subpopulations. Steady-state means that inside one subpopulation, the worst individuals are replaced with newer ones (if the newer are better).</p>
 
-<p>At the end of each generation, the best individual in that generation, is tested against the <em>Validation set</em>. The best on <em>Validation</em> is retained and tested, at the end of the search process against <em>Test set</em>.</p>
+<p>At the end of each generation, the best individual in that generation is tested against the <em>Validation set</em>. The best on <em>Validation</em> is retained and tested, at the end of the search process against <em>Test set</em>.</p>
 
-<p>Parameters for the algoritm are specified in the below image:</p>
+<p>Parameters for the algorithm are specified in the below image:</p>
 
 <img src = "mepx/parameters.png" alt = "parameters">
 
-<p>User may specify the number of subpopulations. Each subpopulation will run independently from the others and, after one generation, they will exchange few individuals.</p>
+<p>The user may specify the number of subpopulations. Each subpopulation will run independently from the others and, after one generation, they will exchange few individuals.</p>
 
 <p>Genetic operators (crossover and mutation) are classic ... nothing new here.</p>
 
-<p>It is possible to specify how often the variables, operators and constants should appear in a chromosome. This is done probabilistically. If you want more operators to appear, please increase the <em>operators probability</em>. More operators mean more complex expressions.</p>
+<p>It is possible to specify how often the variables, operators, and constants should appear in a chromosome. This is done probabilistically. If you want more operators to appear, please increase the <em>operators' probability</em>. More operators mean more complex expressions.</p>
 
-<p>Sum of <em>functions (operators) probability</em>, <em>variables probability</em> and <em>constants probability</em> must be 1. The constants' probability is computed automatically as 1 - the sum of the other 2 probabilities.</p>
+<p>The sum of <em>functions (operators) probability</em>, <em>variables probability</em> and <em>constants probability</em> must be 1. The constants' probability is computed automatically as 1 - the sum of the other 2 probabilities.</p>
 
 <h3 id="runs">3.8. Runs</h3>
 
@@ -416,7 +417,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 
 <p><strong>Num runs</strong> - Usually multiple runs must be performed for computing some statistics.</p>
 
-<p><strong>Num threads</strong> - Specify the number of processor's cores used for running the algorithm. Each subpopulations is run on a thread. This can increase the speed of analysis significantly. If you have a quad core processor with hyper-threading, you may set the number of threads to 8. For best results make sure that the number of subpopulations is a multiple of the number of threads.</p>
+<p><strong>Num threads</strong> - Specify the number of processor cores used for running the algorithm. Each subpopulation is run on a thread. This can increase the speed of analysis significantly. If you have a quad-core processor with hyper-threading, you may set the number of threads to 8. For best results make sure that the number of subpopulations is a multiple of the number of threads.</p>
 
 			<h2 id="results">4. Results</h2>
 			<p>The following results are displayed:</p>
@@ -424,13 +425,13 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			
 				<h3 id = "error">4.1. Error</h3>
 				<p>
-				Error for the entire training, validation and test set. In the case of classification problems we display the number of incorrectly classified data in percent.
+				Error for the entire training, validation, and test set. In the case of classification problems, we display the number of incorrectly classified data in percent.
 				<p>
 				<img src = "mepx/error.png" alt = "error">
 				
 				<h3 id = "model">4.2. Model</h3>
 				<p>
-				Obtained value for each data in the training, validation and test set (also called <em>Model</em> or <em>Output</em>).
+				Obtained value for each data in the training, validation, and test set (also called <em>Model</em> or <em>Output</em>).
 				</p>
 				<img src = "mepx/model_target_error.png" alt = "model">
 				
@@ -446,7 +447,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				
 				<h3 id = "code">4.4. Source code</h3>
 				<p>
-				<b>C</b> or <b>Excel VBA</b> source code of the best solution. This code can be simplified in order to show only instructions that generate the output (remember that not all genes of a chromosome participate to the solution - these genes are called introns). Note that there is no simplification in the case of multi-class classification.
+				<b>C</b> or <b>Excel VBA</b> source code of the best solution. This code can be simplified to show only instructions that generate the output (remember that not all genes of a chromosome participate to the solution - these genes are called introns). Note that there is no simplification in the case of multi-class classification.
 				</p>
 				<img src = "mepx/code.png" alt = "source code in C++">
 				<p><b>Excel VBA</b> code can be used to create a custom formula in <b>Excel</b>.</p>
@@ -456,7 +457,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				<img src = "mepx/mepx_excel_formula.png" alt = "MEPX Excel formula">
 				
 				<p>A movie with this feature is <a href="https://youtu.be/NZXxxJKto_4">here on YouTube</a>.</p>
-				<p>Another movie with <em>time series predictions</em> in Excel is <a href="https://youtu.be/3ONbTwlVrgU">here on YouTube</a>.</p>
+				<p>Another movie with <em>time-series predictions</em> in Excel is <a href="https://youtu.be/3ONbTwlVrgU">here on YouTube</a>.</p>
 				
 				<h3 id = "evolution">4.4. Evolution</h3>
 				<p>
@@ -489,7 +490,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 <p><br></p>
 
 		
-		<h2 id="command_line">6. Running from command line</h2>
+		<h2 id="command_line">6. Running from the command line</h2>
 		
 		<p><b>MEPX</b> can be run in dual mode:<p>
 
@@ -522,9 +523,9 @@ If you supply with 2 or 3 parameters (see below), the program will create no int
 
 <p>If you want to embed the program in your <b>Windows</b> application you can create a new process using the <a href = "https://msdn.microsoft.com/en-us/library/windows/desktop/ms682425(v=vs.85).aspx">CreateProcess</a> function from <b>Windows API</b>.</p>
 
-<p>When the process is over you should read the results from the <em>output.xml</em> file. You can check if the process is almost over by checking for the existance of <em>output.xml</em>. The existance of the file does not guarantee that the writing of data is over. You can check of the file writing is over by looking for the &lt;/project&gt; tag in the <i>xml</i> file. Or you can simply check if the file can be renamed.<p>
+<p>When the process is over you should read the results from the <em>output.xml</em> file. You can check if the process is almost over by checking for the existence of <em>output.xml</em>. The existence of the file does not guarantee that the writing of data is over. You can check of the file writing is over by looking for the &lt;/project&gt; tag in the <i>xml</i> file. Or you can simply check if the file can be renamed.<p>
 
-<p>The search process can take few miliseconds or minutes or hours depending on the data to be analyzed. If you want to stop the search process before it naturally ends, you should create a file (<em>stop_file_name</em>)) which you specified as the last parameter of the command line. The program will check for the existence of that file and will stop the search when that file is found. Make sure that you delete this file if you previously created it with another search!</p>
+<p>The search process can take a few milliseconds or minutes or hours depending on the data to be analyzed. If you want to stop the search process before it naturally ends, you should create a file (<em>stop_file_name</em>)) which you specified as the last parameter of the command line. The program will check for the existence of that file and will stop the search when that file is found. Make sure that you delete this file if you previously created it with another search!</p>
 
 			
 <h2 id="excel_formula">8. Use MEPX formulas as Excel functions</h2>
