@@ -172,6 +172,21 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			</li>
 			
 			<li>
+			<a href="#use_cases">Use cases</a>
+			<ol>
+				<li>
+				<a href="#use_case_symbolic_regression">Symbolic regression</a>
+				</li>
+				<li>
+				<a href="#use_case_classification">Classification</a>
+				</li>
+				<li>
+				<a href="#use_case_time_series">Time series</a>
+				</li>
+			</ol>
+			</li>
+			
+			<li>
 			<a href="#format_of_project_files">The format of the project files</a>
 			</li>
 			
@@ -465,7 +480,33 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 				</p>
 				<img src = "mepx/evolution.png" alt = "evolution">
 				
-			<h2 id="format_of_project_files">5. The format of the project files</h2>
+				<h2 id="use_cases">5. Use cases</h2>
+				
+				<p>Particular settings for each type of problem are described in this section.</p>
+				
+				<h3 id = "use_case_symbolic_regression">5.1. Symbolic regression</h3>
+				
+				<p>Data must be in tabular format. Last column is the target. Target is compulsory for Training and Validation, but not for Test set.</p>
+				<p><em>Problem type</em> must be set to <em>Symbolic Regression</em>.</p>
+				
+				<h3 id = "use_case_symbolic_regression">5.2. Classification</h3>
+				
+				<p>Data must be in tabular format. Last column is the target class. Target is compulsory for Training and Validation, but not for Test set.</p>
+				<p>Classes must be represented as integer numbers between 0 and <em>Number of classes - 1</em>.</p>
+				<p>Data can be loaded from files where the target is represented in 1-of-m format (0 0 1 0), but will be transformed into 1 column during import.</p>
+
+				<p><em>Problem type</em> must be set to <em>Binary classification</em> or <em>Multi-class classification</em>.</p>
+
+				<h3 id = "use_case_symbolic_regression">5.3. Time series</h3>
+
+				<p>Data must have 1 column only.</p>
+				<p><em>Problem type</em> must be set to <em>Time series</em>.</p>
+				<p><em>Window size</em> must be set. This parameter could influence the quality of prediction.</p>
+				<p><em>Predict mode</em> must be set. First try to predict on test then move to predict new data.</p>
+				<p>If <em>Predict mode</em> is <em>Predict new data</em> then, the <em>Number of predictions</em> must be set.</p>
+				
+				
+			<h2 id="format_of_project_files">6. The format of the project files</h2>
 
 				<p>Projects can be saved/loaded to/from <em>.xml</em> files which is the default format of the <b>MEPX</b>.</p>
 <p>The <i>xml</i> file has a tree structure. The root node is named <i>project</i>.</p>
@@ -490,7 +531,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 <p><br></p>
 
 		
-		<h2 id="command_line">6. Running from the command line</h2>
+		<h2 id="command_line">7. Running from the command line</h2>
 		
 		<p><b>MEPX</b> can be run in dual mode:<p>
 
@@ -519,7 +560,7 @@ If you supply with 2 or 3 parameters (see below), the program will create no int
 <p><i>Note</i>: Last parameter is optional and is used only if you want to stop the search process earlier.</p>
 
 
-<h2 id="embedding_into_other_apps">7. Embedding the MEPX in your application</h2>
+<h2 id="embedding_into_other_apps">8. Embedding the MEPX in your application</h2>
 
 <p>If you want to embed the program in your <b>Windows</b> application you can create a new process using the <a href = "https://msdn.microsoft.com/en-us/library/windows/desktop/ms682425(v=vs.85).aspx">CreateProcess</a> function from <b>Windows API</b>.</p>
 
@@ -528,7 +569,7 @@ If you supply with 2 or 3 parameters (see below), the program will create no int
 <p>The search process can take a few milliseconds or minutes or hours depending on the data to be analyzed. If you want to stop the search process before it naturally ends, you should create a file (<em>stop_file_name</em>)) which you specified as the last parameter of the command line. The program will check for the existence of that file and will stop the search when that file is found. Make sure that you delete this file if you previously created it with another search!</p>
 
 			
-<h2 id="excel_formula">8. Use MEPX formulas as Excel functions</h2>
+<h2 id="excel_formula">9. Use MEPX formulas as Excel functions</h2>
 
 <ol>
 <li>First, run <b>MEPX</b> on some data to obtain the formula.</li>
@@ -546,7 +587,7 @@ If you supply with 2 or 3 parameters (see below), the program will create no int
 <p>A movie with this feature is <a href="https://youtu.be/NZXxxJKto_4">here on YouTube</a>.</p>
 <p>Version 2021.10.29 or newer is needed to export in VBA for Excel.</p>
 
-<h2 id="reporting_problems">9. Reporting problems, bugs, comments</h2>
+<h2 id="reporting_problems">10. Reporting problems, bugs, comments</h2>
 <p>If you have problems with this program please save the project (by pressing the <em>Save Project</em> button from the main toolbar) and send it to <em>mihai.oltean@gmail.com</em></p>
 			
 			</td>
