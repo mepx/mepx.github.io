@@ -343,17 +343,20 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 <p>Binary classification uses a threshold for making the distinction between classes. Values less or equal to the threshold are classified as belonging to class 0 and the others are classified as belonging to class 1.</p>
 <p>In the case of binary classification, the threshold is computed automatically (because of that, binary classification can be slower sometimes).</p>
 
-<p>For multi-class classification there are 3 strategies:</p>
+<p>For multi-class classification there are 4 strategies:</p>
 <ul>
 
-<li><strong>Winner takes all - fixed positions</strong> -the outputs are assigned to groups of genes and the gene encoding the expression having the first maximal value will provide the class for that data (see more details here: <a href="https://groups.google.com/forum/#!topic/mepx/_lkIM7vMiws">google groups post</a>).
+<li><strong>Winner takes all - fixed positions</strong> -the outputs are assigned to groups of genes and the gene encoding the expression having the first maximal value will provide the class for that data.
 
 </li>
 <li><strong>Winner takes all - fixed positions - smooth fitness</strong>
 </li>
-<li><strong>Winner takes all - best genes</strong>
-</li>
+<li><strong>Winner takes all - best genes</strong></li>
+<li><strong>Closest class</strong></li>
+
 </ul>
+
+A detailed description of the fitness computation for classification problems is given in <a href="https://www.researchgate.net/publication/359261779_Multi_Expression_Programming_for_solving_classification_problems">this research paper</a>.
 
 <h4 id="fitness_function_time_series">Time Series</h4>
 
