@@ -36,7 +36,35 @@
 		
 		<td>
 	
+	<ul>
+	<li>
+	<a href="#abstract">Abstract</a>
+	</li>
+	<li>
+	<a href="#MEP_strengths">MEP Strengths</a>
+	</li>
+	<li>
+	<a href="#mep_representation">Representation of solutions</a>
+	</li>
+	<li>
+	<a href="#decoding_mep">Translation chromosomes into computer programs</a>
+	</li>
+	<li>
+	<a href="#multiple_solutions_per_chromosome">Multiple solutions per chromosome</a>
+	</li>
+	<li>
+	<a href="#genetic_operators">Genetic operators</a>
+	</li>
+	<li>
+	<a href="#main_algorithm">Main algoritm</a>
+	</li>
+	</ul>
+
+<h2 id = "abstract">Abstract</h2>
+
 <p>Multi Expression Programming (MEP) is a method for automatic generation of computer programs. Particularly it can be used for generating mathematical expressions for data analysis (regression and classification). MEP differentiates from other GP techniques by encoding multiple solutions in the same chromosome.</p>
+
+<h2 id = "MEP_strengths">MEP strengths</h2>
 
 <p>MEP has several strong advantages compared to other techniques:</p>
 
@@ -51,7 +79,7 @@ Evaluates the computer programs instruction by instruction and stores the partia
 
 </ul>
 
-<h2>MEP representation</h2>
+<h2 id = "mep_representation">Representation of solutions</h2>
 
 MEP representation is not specific. Linear and tree-based representations have been tested (see the list of papers). Here we exemplify with a linear representation.
 
@@ -110,7 +138,7 @@ d
 
  
 
-<h2>Decoding MEP chromosome and the fitness assignment process</h2>
+<h2 id = "decoding_mep">Decoding MEP chromosome and the fitness assignment process</h2>
 
 <p>Now we are ready to describe how MEP individuals are translated into computer programs. This translation represents the phenotypic transcription of the MEP chromosomes.</p>
 
@@ -180,7 +208,7 @@ fitness(<i>C</i>) = <b>min</b> fitness(E<sub><i>i</i></sub>).
 
  
 
-<h2>Why encoding multiple solutions within a chromosome?</h2>
+<h2 id = "multiple_solutions_per_chromosome">Why encoding multiple solutions within a chromosome?</h2>
 
 <p>When you compute the value of an expression encoded as a GP tree you have the compute the value of all subtrees. This means that all GP subtrees can be viewed as a potential solution of the problem being solved. Most of the GP techniques considers only the one tree while ignoring all the other subtrees. However, the value/fitness for all subtrees is computed by GP. The biggest difference between MEP and other GP techniques is that MEP outputs the best subtree encoded in a chromosome. Note that the complexity (roughly speaking - the running time) is the same for MEP and other GP techniques encoding 1 solution/chromosome.</p>
 
@@ -188,9 +216,7 @@ fitness(<i>C</i>) = <b>min</b> fitness(E<sub><i>i</i></sub>).
 
  
 
-<h2>How to encode multiple solutions within a chromosome?</h2>
-
-<p>The second question is more difficult than the first one. There is no general prescription on how to encode multiple solutions in the same chromosome. In most cases this involves creativity and imagination. However, some general suggestions can be given.</p>
+<p>How to efficiently encode multiple solutions within a chromosome is sometimes difficult. There is no general prescription on how to encode multiple solutions in the same chromosome. In most cases this involves creativity and imagination. However, some general suggestions can be given.</p>
 
 <p>In order to obtain some benefits from encoding more than one solution in a chromosome we have to spend a similar effort (computer time, memory etc) as in the case of encoding a single solution in a chromosome. For instance, if we have 10 solutions encoded in chromosome and the time needed to extract and decode these solutions is 10 times larger than the time needed to extract and process one solution we got nothing. In this case we can not talk about an useful encoding.</p>
 
@@ -198,7 +224,10 @@ fitness(<i>C</i>) = <b>min</b> fitness(E<sub><i>i</i></sub>).
 
 <p>Usually encoding multiple solutions in a chromosome might require storing the partial results. Sometimes this can be achieved by using the Dynamic Programming technique. This kind of model is employed by the Multi Expression Programming.</p>
 
-<h2>Crossover</h2>
+
+<h2 id = "genetic_operators">Genetic operators</h2>
+
+<h3>Crossover</h3>
 
 <p>One cutting point or uniform crossover have been tested with similar results. The cut points are chosen between instructions not inside them.</p>
 
@@ -206,7 +235,7 @@ fitness(<i>C</i>) = <b>min</b> fitness(E<sub><i>i</i></sub>).
 corresponding binary representation operator. One crossover point is randomly chosen and the parent chromosomes exchange the sequences at the
 right side of the crossover point.</p>
 
-<h2>Mutation</h2>
+<h3>Mutation</h3>
 
 <p>
 Each symbol (terminal, function of function pointer) in the chromosome may
@@ -222,7 +251,7 @@ current gene encodes a function, the gene may be mutated into a terminal
 symbol or into another function (function symbol and pointers towards ar-
 guments).</p>
 
-<h2>Main algorithm - steady state.</h2>
+<h2 id ="main_algorithm">Main algorithm</h2>
 
 <p>The MEP algorithm starts by creating a random population of individuals.</p>
 
