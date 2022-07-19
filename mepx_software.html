@@ -13,7 +13,7 @@
 
 <center>
 <h1>MEPX software</h1>
-<h2>version 2022.3.19.0-beta</h2>
+<h2>version 2022.7.19.0-beta</h2>
 </center>
 
 <table  cellpadding="8" width="1003" align="center">
@@ -58,7 +58,7 @@
 		<h2>How to install Multi Expression Programming X</h2>
 
 
-<h2 style="color:red">Windows 7, 8, 10 (64bit)</h2> 
+<h2 style="color:red">Windows 7, 8, 10 (64-bit)</h2> 
 
 <p>Just download the program from here:</p>
 		
@@ -67,7 +67,7 @@
 <p>unzip the archive and run the <strong>mepx.exe</strong> application. There is no installation kit. Please remember where you saved it so that you can run it next time.</p>
 
 
-<h2 style="color:red">Apple macOS / OSX (64bit) (version 10.9 or newer; Intel and Apple Silicon)</h2> 
+<h2 style="color:red">Apple macOS / OSX (64-bit) (version 10.9 or newer; Intel and Apple Silicon)</h2> 
 
 <p>Download the program from here:</p>
 
@@ -75,7 +75,7 @@
 
 <p>It is .zip archive. Double-click it in <em>Finder</em>. It should be decompressed in the same folder as the zip archive. Open it from there (you should right click the icon and choose <em>Open</em> command).</p>
 
-<h2 style="color:red">Ubuntu (64bit) (tested on Ubuntu 18)</h2> 
+<h2 style="color:red">Ubuntu (64-bit) (tested on Ubuntu 18)</h2> 
 <p>Download the program from here:</p>
 
 		<p><a href="mepx.deb">mepx.deb</a> (2.23 MB)</p>
@@ -245,7 +245,7 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/Butto
 			
 			<p>Currently, the problems can have only 1 output (see below an exception for classification problems). Files containing multiple outputs must be split accordingly (for instance <em>Building</em> problem from PROBEN1 which has 3 outputs (energy, hot and cold water)).</p>
 			
-			<p>For classification problems, the last column may contain only values 0 or 1 (for binary classification) or values 0, 1 ... (num_classes - 1) for more multi-class classification.</p>
+			<p>For classification problems, the last column may contain only integer values (2 distinct values for binary classification or more for multi-class classification). Starting with version 2022.7.19, any integer values are accepted as output for classification problems. Previously, only continuous, integer values, starting with 0 were accepted as output for classification problems.</p>
 			
 			<p>It is also possible that the output for classification problems to be given in <i>one-of-m</i> format. For instance, if the problem has 5 classes, the output will have 5 values, one of them being set to 1 and all others being set to 0 (example: 0 1 0 0 0).</p>
 
@@ -448,7 +448,7 @@ A detailed description of the fitness computation for classification problems is
 			
 				<h3 id = "error">4.1. Error</h3>
 				<p>
-				Error for the entire training, validation, and test set. In the case of classification problems, we display the number of incorrectly classified data in percent.
+				Error for the entire training, validation, and test set. In the case of classification problems, the number of incorrectly classified data (in percent) is displayed.
 				<p>
 				<img src = "mepx/error.png" alt = "error">
 				
@@ -484,7 +484,7 @@ A detailed description of the fitness computation for classification problems is
 				
 				<h3 id = "evolution">4.4. Evolution</h3>
 				<p>
-				Evolution of fitness (this can be different from the number of incorrectly classified data) for the best individual in the population and the population average.
+				Evolution of fitness for the best individual in the population and the average fitness of the population. Note that, for classification problems, the fitness is not always computed as the number of incorrectly classified data.
 				</p>
 				<img src = "mepx/evolution.png" alt = "evolution">
 				
@@ -500,7 +500,7 @@ A detailed description of the fitness computation for classification problems is
 				<h3 id = "use_case_classification">5.2. Classification</h3>
 				
 				<p>Data must be in tabular format. Last column is the target class. Target is compulsory for Training and Validation, but not for Test set.</p>
-				<p>Classes must be represented as integer numbers between 0 and <em>Number of classes - 1</em>.</p>
+				<p>Classes must be represented as integer numbers. Starting with version 2022.7.19, any integer numbers are accepted as target. Previously, the target should have been integer values between 0 and <em>Number of classes - 1</em>.</p>
 				<p>Data can be loaded from files where the target is represented in 1-of-m format (0 0 1 0), but will be transformed into 1 column during import.</p>
 
 				<p><em>Problem type</em> must be set to <em>Binary classification</em> or <em>Multi-class classification</em>.</p>
